@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      defaultValue: UUIDV4,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
     },
     height: {
@@ -31,6 +31,8 @@ module.exports = (sequelize) => {
       allowNull: true,
     }
   },{
-    timestamps: false,
+    timeStamps: false,
+    createdAt: false,
+    updatedAt: false,
   });
 };
