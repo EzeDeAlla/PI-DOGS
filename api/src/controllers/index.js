@@ -31,7 +31,9 @@ const getApiB = async () => {
                 id: e.id,
                 image: e.image.url,
                 name: e.name,
-                temperament: e.temperament
+                temperament: e.temperament,
+                weight: e.weight,
+                height: e.height
             }
         })
         return apiBreeds;
