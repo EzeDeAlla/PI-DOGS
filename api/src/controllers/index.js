@@ -32,8 +32,9 @@ const getApiB = async () => {
                 image: e.image.url,
                 name: e.name,
                 temperament: e.temperament,
-                weight: e.weight,
-                height: e.height
+                life_span: e.life_span,
+                weight: e.weight.metric, //error por no poner .metric, no se mostraba xq react no se que cosa con los cokponentes hijos ya que no accedia a .metric
+                height: e.height.metric  //error por no poner .metric, no se mostraba xq react no se que cosa con los cokponentes hijos ya que no accedia a .metric
             }
         })
         return apiBreeds;
