@@ -10,10 +10,11 @@ export const DogDetailByName = () => {
   const search = useLocation().search;
   const name = new URLSearchParams(search).get("name");
   const dog = useSelector((state) => state.dog);
+  console.log(dog);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDogByName(name));
-  }, [dog]);
+  }, []);
 
   if (typeof dog.error === "string") {
     return (
@@ -27,9 +28,9 @@ export const DogDetailByName = () => {
         {dog.length > 0 ? (
           dog.map((el) => (
             <DogCard
-              image={el.image}
+              image={el.image.url}
               name={el.name}
-              temperament={el.temperaments}
+              temperament={el.temperament}
               weight={el.weight}
               id={el.id}
               key={el.id}

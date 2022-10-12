@@ -6,10 +6,7 @@ export const LandingPage = () => {
   return (
     <div className={s.div}>
       <Link to="/home">
-        <img
-          src="http://todovector.com/vector/animales/terrestres/perros/hueso-de-perro/164.png"
-          className={s.img}
-        />
+        <h1>home</h1>
       </Link>
     </div>
   );

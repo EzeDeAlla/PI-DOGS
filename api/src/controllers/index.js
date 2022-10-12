@@ -62,7 +62,7 @@ const getDbBreeds = async () => {
 
 async function getTemperaments(){
 
-    const apiResult = await axios.get(`https://api.thedogapi.com/v1/breeds`,{headers: {'x-api-key': `${API_KEY}`}})
+    const apiResult = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
     let temperaments = apiResult.data.map(e => e.temperament);
     temperaments = temperaments.join().split(",");
     
@@ -77,29 +77,18 @@ async function getTemperaments(){
     return temp;
 }
 
+const getBreeds = async () => {
+    const apiInfo = await getApiB();
+    const bdInfo = await getDbBreeds();
+    const allInfo = apiInfo.concat(bdInfo);
+    return allInfo;
+  };
 
-
-
-
-// const post = async (name, weight, height, life_span, temperament, image) => {
-//     let newDog = await Dog.create({
-//         name: name,
-//         height: {metric: height},
-//         weight: {metric: weight},
-//         life_span: life_span,
-//         image: image,
-//     });
-//     let TemperamentDB = await Temperament.findAll({
-//         where: {name: temperament},
-//     });
-
-//     return await newDog.addTemperament(TemperamentDB);
-// }
-
-// si vas a usar lo de arriba no te olvies de exportarlo (:
+  
 
 module.exports = {
     getApiB,
     getDbBreeds,
     getTemperaments,
+    getBreeds,
 };

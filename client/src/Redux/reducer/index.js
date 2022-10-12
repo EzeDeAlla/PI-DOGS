@@ -25,39 +25,40 @@ const rootReducer = (state = initialState, action) => {
         dogs: action.payload,
         allDogs: action.payload,
       };
-
+// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
     case GET_DOG:
       return {
         ...state,
         dog: action.payload,
       };
-
-    case CREATE_DOG:
-      return {
-        ...state,
-        dogs: [...state.dogs, action.payload],
-      };
-
+// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
+     case CREATE_DOG:
+       return {
+         ...state,
+         dogs: [...state.dogs, action.payload],
+       };
+// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
     case GET_TEMPERAMENTS:
       return {
         ...state,
         temperaments: action.payload,
       };
-
+// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
     case GET_DOG_BY_NAME:
       return {
         ...state,
         dog: action.payload,
       };
+// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
     case FILTER_BY_API_DB:
       const allDogs = state.allDogs;
       let apiDbFiltered = [];
       if (action.payload === "Todos") {
         apiDbFiltered = allDogs;
       } else if (action.payload === "Creados") {
-        apiDbFiltered = allDogs.filter((el) => el.createdInDb);
+        apiDbFiltered = allDogs.filter((e) => e.createdInDb);
       } else {
-        apiDbFiltered = allDogs.filter((el) => !el.createdInDb);
+        apiDbFiltered = allDogs.filter((e) => !e.createdInDb);
       }
 
       return {
@@ -65,7 +66,7 @@ const rootReducer = (state = initialState, action) => {
         dogs: apiDbFiltered,
       };
 
-
+// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
       case FILTER_BY_TEMPERAMENT:
         const allTemps=state.allDogs;
 
@@ -77,7 +78,7 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             dogs: all,
         }
-  
+  // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
     case ORDER_BY_NAME:
       const allDogsFilterName = state.allDogs;
       let sortedArr;
@@ -110,7 +111,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         dogs: sortedArr,
       };
-
+// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
     case ORDER_BY_WEIGHT:
       const allDogsFilterWeight = state.allDogs;
       let sortedArrPeso;
@@ -155,7 +156,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         dogs: sortedArrPeso,
       };
-
+// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
       case 'FILTER_A_Z':
             const order= action.payload==='a-z'?
              state.dogs.sort((a,b)=>{
@@ -169,28 +170,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 dogs: [...order],
             };
-
-            case 'FILTER_BY_CREATED':
-        var createdFilter=
-        action.payload==='created' ?
-        state.allDogs?.filter((e)=>e.createdInDb):
-        state.allDogs?.filter((e)=>!e.createdInDb);
-
-        if(action.payload==='all'){
-            createdFilter= state.allDogs;
-        }
-        if(!createdFilter){
-            return{
-                ...state,
-                error:{ created:true}
-            }
-        }
-
-        return {
-            ...state,
-            dogs: createdFilter,
-        }
-
+// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || /
         
 
     default:

@@ -1,23 +1,29 @@
-.contentPagination {
+.pagination {
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    list-style: none;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: center;
+    height: 2em;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
-.paginationButton {
-    border: 5px solid var(--border-color);
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
+.listas {
+    margin: 0.5rem;
+    padding: 0.5em;
+    width: 1.5em;
+    background-color: rgba(54, 206, 181, 0.555);
+    border-radius: 50%;
+}
+
+.listas:hover {
     cursor: pointer;
-    margin-bottom: 1%;
 }
 
-.inputActive {
-    background-color: #9bdf7b;
-    color: var(--text-white-color);
-  }
+.nav {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+}

@@ -1,14 +1,15 @@
 import axios from 'axios';
 
+export const CREATE_DOG = "CREATE_DOG";
 export const GET_ALL_DOGS = "GET_ALL_DOGS";
 export const GET_DOG = "GET_DOG";
-export const CREATE_DOG = "CREATE_DOG";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 export const GET_DOG_BY_NAME = "GET_DOG_BY_NAME";
 export const FILTER_BY_API_DB = "FILTER_BY_API_DB";
 export const FILTER_BY_TEMPERAMENT = "FILTER_BY_TEMPERAMENT";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
+
 
 
 const getAllDogs = () => {
@@ -104,18 +105,13 @@ const filter_created = (payload) => {
     };
 };
 
-const createDog = (dogCreated) => (dispatch) => {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dogCreated),
-    };
-    return fetch("http://localhost:3001/dogs", options).then((data) =>
-      data.json()
-    );
-  };
+export function postDogs(payload){
+    return async function(){
+        const create= await axios.post('http://localhost:3001/dogs',payload);
+        return create;
+    }
+}
+
 
 
 
@@ -130,5 +126,4 @@ export {
     orderByWeight,
     filterA_Z,
     filter_created,
-    createDog,
 }

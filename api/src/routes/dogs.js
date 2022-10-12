@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const axios = require('axios');
-const { getApiB, getDbBreeds, post } = require('../controllers');
+const { getApiB, getDbBreeds, post, getBreeds } = require('../controllers');
 const { Dog, Temperament } = require('../db');
 const { API_KEY } = process.env;
 // si no funciona poner cambiar por: //// router.get('/', async (req, res) => { ////
@@ -50,55 +50,42 @@ router.get('', async (req, res) => {
 })
 
 
-router.get('/:idRaza', async (req, res) => {
-   try {
-       const { idRaza } = req.params;
-       const allDogs = await getApiB();
-       if (!idRaza) {
-           res.status(404).json("Couldn't find the name on DBase")
-       } else {
-           const dog = allDogs.find(dogui => dogui.id.toString() === idRaza);
-           res.status(200).json(dog)
-       }
-   } catch (error) {
-       res.status(404).send(error)
+router.get('/:id', async (req, res) => {
+    const id = req.params.id;
+    const breeds = await getBreeds();
+    if (id) {
+      const filtrados = await breeds.filter((e) => e.id == id);
+      filtrados.length
+        ? res.status(200).json(filtrados)
+        : res.status(404).send("Raza no encontrada por ID");
+    }
+  });
+
+
+router.post("/", async (req, res) => {
+    const {
+      name,
+      height,
+      weight,
+      life_span,
+      temperaments,
+      image,
+    } = req.body;
+  
+    const createDog = await Dog.create({
+      name:name,
+      height: height,
+      weight: weight,
+      life_span: life_span,
+      image: image,
+      temperament: temperaments,
+      
+    });
+   if(createDog){
+  res.status(200).json(createDog);
+   }else{
+     res.status(500).send('uncreated dog')
    }
-})
-
-
-router.post('/', async (req, res) =>{
-
-    let {image, name, height, weight, temperament} = req.body;
-
-    if(!name || !height || !weight || !image){
-        res.status(400).send('Necessary data missing')
-    }
-    else{
-        try{
-            const dog = await Dog.create({
-                image: image,
-                name: name,
-                height: height ,
-                weight: weight,
-            });
-            
-            if(temperament){
-                temperament.forEach(async e => {
-                    const temper = await Temperament.findOne({
-                        where: {
-                            name: e
-                        }
-                    })
-                    // await temper.addDog(dog);
-                    await dog.addTemperaments(temper);
-                });
-            }
-            res.send(dog);
-        }
-        catch(e){
-            console.log('ERROR!!: ',e)
-        }
-    }
 });
 
 

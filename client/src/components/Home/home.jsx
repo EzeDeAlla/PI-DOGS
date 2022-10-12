@@ -37,6 +37,7 @@ export const Home = () => {
 
   function handleFilterByApiDb(e) {
     dispatch(filterByApiDb(e.target.value));
+    setCurrentPage(1);
   }
 
   function handleFilterByTemperament(e) {

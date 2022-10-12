@@ -31,6 +31,10 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    temperament:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     createdInDb:{
       type: DataTypes.BOOLEAN,
       allowNull: false,

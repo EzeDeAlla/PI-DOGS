@@ -2,44 +2,62 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getDog } from "../../Redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
-import s from "./DogDetail.module.css";
 
-export const DogDetail = () => {
-  let { id } = useParams();
-  const dog = useSelector((state) => state.dog);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (id !== dog.id) {
-      dispatch(getDog(id));
-    }
-  }, [dog]);
+import { Link } from "react-router-dom";
 
-  if (typeof dog.error === "string") {
+
+export default function Detail(){
+    const { id }= useParams();
+    const dogDetail = useSelector((e)=>e.dog);
+    console.log(dogDetail);
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        dispatch(getDog(id));
+    }, [dispatch, id]);
+
     return (
-      <div>
-        <p>No se encontró un perro con esas características.</p>
-      </div>
-    );
-  } else {
-    return (
-      <div className={s.divContainer}>
-        <div className={s.div}>
-          <p>{dog.name} </p>
-          <img src={dog.image} alt="Imagen de perro." className={s.img} />
-          <p className={s.divTemperamento}>
-            Temperamento:{" "}
-            {dog.temperaments?.map((e) => (
-              <span> {e.name}</span>
-            ))}{" "}
-          </p>
-          <p>Temperamentoss: {dog.temperament}</p>
-          <p>Altura: {dog.height} </p>
-          <p>Peso: {dog.weight} </p>
-          <p>Esperanza de vida: {dog.life_span} </p>
+        <div>
+            <div className="paginado">
+                <Link to= "/home">
+                <button className="boton4">Home</button>
+                </Link>
+            </div>
+                {dogDetail.length > 0 
+                ? (
+                <main className="paginado2">
+                    <div>
+                        <div >
+                            
+                            <img className="imagdetalle" src={dogDetail[0].image} alt= "no tiene imagen"/>
+                        </div>
+                    </div>
+                    <div className="cardDetalle">
+                        <div>
+                            <h1>{dogDetail[0].name}</h1>
+                        </div>
+                        <div className="base3">
+                            <h4>Temperament:</h4>
+                            <p>{dogDetail[0].temperament}</p>
+                        </div>
+                        <div className="base3">
+                            <h4>Height:</h4>
+                            <p>{dogDetail[0].height}</p>
+                        </div >
+                        <div className="base3">
+                            <h4>Weight:</h4>
+                            <p>{dogDetail[0].weight}</p>
+                        </div>
+                        <div className="base3">
+                            <h4>Life Span</h4>
+                            <p>{dogDetail[0].life_span}</p>  
+                        </div>
+                    </div>
+                </main>
+                ) : (
+              <h1>Cargando ...</h1>
+                )}
         </div>
-      </div>
-    );
-  }
-};
-
-export default DogDetail;
+    )
+}
