@@ -42,7 +42,7 @@ const getApiB = async () => {
         console.log('Error', error)
     }
 }
-
+// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
 const getDbBreeds = async () => {
     try {
         const dbBreeds = await Dog.findAll({
@@ -60,6 +60,7 @@ const getDbBreeds = async () => {
     }
 }
 
+// || // || // || // || // || // || OBTENER TEMPS // || // || // || // || // || // || // || // || // || //
 async function getTemperaments(){
 
     const apiResult = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
@@ -76,7 +77,7 @@ async function getTemperaments(){
     });
     return temp;
 }
-
+// || // || // || // || // || // || // CONCATENAR LAS FUNCIOENS // || // || // || // || // || // || // || //
 const getBreeds = async () => {
     const apiInfo = await getApiB();
     const bdInfo = await getDbBreeds();

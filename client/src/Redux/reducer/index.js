@@ -1,7 +1,6 @@
 import {
   GET_ALL_DOGS,
   GET_DOG,
-  CREATE_DOG,
   GET_TEMPERAMENTS,
   GET_DOG_BY_NAME,
   FILTER_BY_API_DB,
@@ -31,12 +30,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         dog: action.payload,
       };
-// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
-     case CREATE_DOG:
-       return {
-         ...state,
-         dogs: [...state.dogs, action.payload],
-       };
 // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
     case GET_TEMPERAMENTS:
       return {

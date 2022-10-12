@@ -16,8 +16,6 @@ router.get('/', async (req, res) =>{
     });
 
     let t = await Temperament.findAll()
-    const first = t.shift();
-
     res.send(t)
 });
 

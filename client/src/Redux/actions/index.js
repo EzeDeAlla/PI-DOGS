@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-export const CREATE_DOG = "CREATE_DOG";
 export const GET_ALL_DOGS = "GET_ALL_DOGS";
 export const GET_DOG = "GET_DOG";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
@@ -105,7 +104,7 @@ const filter_created = (payload) => {
     };
 };
 
-export function postDogs(payload){
+const postDogs =(payload)=>{
     return async function(){
         const create= await axios.post('http://localhost:3001/dogs',payload);
         return create;
@@ -126,4 +125,5 @@ export {
     orderByWeight,
     filterA_Z,
     filter_created,
+    postDogs,
 }

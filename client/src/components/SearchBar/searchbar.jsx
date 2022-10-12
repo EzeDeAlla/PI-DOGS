@@ -20,7 +20,7 @@ export const SearchBar = () => {
             <li className={s.li}>Create dog</li>
           </Link>
           <input
-            className={s.li}
+            className={s.op}
             placeholder="Buscar"
             onChange={(e) => {
               if (/^[A-Za-z\s]+$/g.test(e.target.value.trim())) {
@@ -29,7 +29,7 @@ export const SearchBar = () => {
             }}
           />
           <Link to={`/detailByName?name=${buscar}`}>
-            <button>Buscar</button>
+            <button className={s.buscar}>Buscar</button>
           </Link>
         </ul>
       </nav>

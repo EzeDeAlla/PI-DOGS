@@ -37,27 +37,23 @@ export const Home = () => {
 
   function handleFilterByApiDb(e) {
     dispatch(filterByApiDb(e.target.value));
-    setCurrentPage(1);
   }
 
   function handleFilterByTemperament(e) {
     e.preventDefault();
     dispatch(filterByTemperament(e.target.value));
-    setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`)
   }
 
   function handleSortName(e) {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
-    setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
   }
 
   function handleSortWeight(e) {
     e.preventDefault();
     dispatch(orderByWeight(e.target.value));
-    setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
   }
 

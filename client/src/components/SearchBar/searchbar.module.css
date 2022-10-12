@@ -3,7 +3,6 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    width: 100%;
 }
 
 .ul{
@@ -14,10 +13,27 @@
     justify-content: center;
     height: 2em;
     width: 100%;
-    list-style: none
+    list-style: none;
+}
+
+.op{
+    font-size: 15px;
+    margin: 1em;
+    padding: 1px;
+    font-family: jetBrains Mono;
+    color: #000000;
 }
 
 .li {
     margin: 1em;
     padding: 1px;
+    font-family: jetBrains Mono;
+    color: #3f7e59;
+    font-size: 20px;
+}
+
+.buscar{
+    color: #000000;
+    font-weight: 600;
+    background-color: #95c0a7;
 }

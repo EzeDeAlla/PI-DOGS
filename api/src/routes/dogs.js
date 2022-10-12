@@ -4,7 +4,8 @@ const axios = require('axios');
 const { getApiB, getDbBreeds, post, getBreeds } = require('../controllers');
 const { Dog, Temperament } = require('../db');
 const { API_KEY } = process.env;
-// si no funciona poner cambiar por: //// router.get('/', async (req, res) => { ////
+
+// || // || // || // || // || // GET DOG // || // || // || // || // || // || // || // || //
 router.get('', async (req, res) => {
     let {name} = req.query;
     
@@ -49,7 +50,7 @@ router.get('', async (req, res) => {
     }
 })
 
-
+// || // || // || // || // || // GET DOG ID// || // || // || // || // || // || // || // || //
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
     const breeds = await getBreeds();
@@ -61,7 +62,7 @@ router.get('/:id', async (req, res) => {
     }
   });
 
-
+// || // || // || // || // || // || POST  || // || // || // || // || // || // || // || //
 router.post("/", async (req, res) => {
     const {
       name,

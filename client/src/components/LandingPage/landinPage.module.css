@@ -1,6 +1,8 @@
 .div {
     min-height: 100vh;
-    background-color: rgb(241, 215, 181);
+    background-image: url('../../img/dallePosibleLanding.png');
+    background-size:110% 120%;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,4 +14,38 @@
 
 .img:hover {
     transform: scale(1.2);
+}
+
+.buttonStart {
+    width: 200px;
+    height: 70px;
+    border-radius: 45px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    background: #95c0a7;
+    color: #fff;
+    transition: all 1s ease;
+    border: 4px solid rgb(28, 209, 200);
+    transition-delay: 0.2s;
+    cursor: pointer;
+    margin-left: 180px;
+}
+
+.title{
+    font-family: jetBrains Mono;
+    font-size: 50px;
+    line-height: 30px;
+    font-weight: 900;
+    margin-bottom: 50px;
+    margin-left: 180px;
+    color: #95c0a7;
+}
+
+h2{
+    font-family: jetBrains Mono;
+    font-size: 25px;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    color: #95c0a7;
 }

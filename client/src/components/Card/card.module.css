@@ -10,12 +10,14 @@
     padding: 0.5rem;
     box-sizing: border-box; 
      width: 300px;
-	margin: 10px;
-	border-top: 5px dotted #67a180;
-border-right: 5px dotted #67a180;
-border-bottom: 5px dotted #67a180;
-border-left: 5px dotted #67a180;
-background: #95c0a7;  
+	  margin: 10px;
+	  border-top: 5px dotted #67a180;
+    border-right: 5px dotted #67a180;
+    border-bottom: 5px dotted #67a180;
+    border-left: 5px dotted #67a180;
+    background: #95c0a7;
+    font-family: jetBrains Mono;
+    color: #3f7e59;
   }
   
   .img {

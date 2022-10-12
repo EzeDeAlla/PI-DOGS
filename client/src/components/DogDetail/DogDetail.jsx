@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getDog } from "../../Redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
-
+import s from './DogDetail.module.css'
 import { Link } from "react-router-dom";
 
 
@@ -19,37 +19,37 @@ export default function Detail(){
 
     return (
         <div>
-            <div className="paginado">
+            <div className={s.paginado}>
                 <Link to= "/home">
-                <button className="boton4">Home</button>
+                <button className={s.boton4}>Home</button>
                 </Link>
             </div>
                 {dogDetail.length > 0 
                 ? (
-                <main className="paginado2">
+                <main className={s.paginado2}>
                     <div>
                         <div >
                             
-                            <img className="imagdetalle" src={dogDetail[0].image} alt= "no tiene imagen"/>
+                            <img className={s.imagdetalle} src={dogDetail[0].image} alt= "no tiene imagen"/>
                         </div>
                     </div>
-                    <div className="cardDetalle">
+                    <div className={s.cardDetalle}>
                         <div>
                             <h1>{dogDetail[0].name}</h1>
                         </div>
-                        <div className="base3">
+                        <div className={s.base3}>
                             <h4>Temperament:</h4>
                             <p>{dogDetail[0].temperament}</p>
                         </div>
-                        <div className="base3">
+                        <div className={s.base3}>
                             <h4>Height:</h4>
                             <p>{dogDetail[0].height}</p>
                         </div >
-                        <div className="base3">
+                        <div className={s.base3}>
                             <h4>Weight:</h4>
                             <p>{dogDetail[0].weight}</p>
                         </div>
-                        <div className="base3">
+                        <div className={s.base3}>
                             <h4>Life Span</h4>
                             <p>{dogDetail[0].life_span}</p>  
                         </div>

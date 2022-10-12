@@ -4,6 +4,8 @@ import { postDogs, getTemperaments} from "../../Redux/actions/index";
 import { useState, useEffect } from "react";
 import s from "./Formulario.module.css";
 import { Link } from 'react-router-dom';
+import imgP from '../../img/dallePerroFeliz.png';
+import { validation } from './Validations';
 
 export default function CreateDog() {
   const dispatch = useDispatch();
@@ -22,20 +24,27 @@ export default function CreateDog() {
     createdInBd: false,
   });
   const [errors, setErrors] = useState({});
-
+console.log(errors);
   useEffect(() => {
     dispatch(getTemperaments());
   }, [dispatch]);
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!errors.name &&
+        !errors.minHeight &&
+        !errors.maxHeight &&
+        !errors.minWeight &&
+        !errors.maxWeight &&
+        !errors.minlife_span &&
+        !errors.maxlife_span){
       let crear = {
         name: input.name,
         height: `${input.minHeight} - ${input.maxHeight}`,
         weight: `${input.minWeight} - ${input.maxWeight}`,
         life_span: `${input.minlife_span} - ${input.maxlife_span} years`,
         image: input.image,
-        temperaments: input.temperaments.join(", "),
+        temperaments: input.temperaments.join(", "),  
       };
       dispatch(postDogs(crear));
       setInput({
@@ -50,15 +59,18 @@ export default function CreateDog() {
         temperaments: [],
         createdInBd: true,
       });
-      alert('Dog Create!!')
+      alert('Dog Create!!')} else {
+        alert('completa los campos requeridos')
+      }
   }
+  console.log(errors)
   function handelChange(e) {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
     setErrors(
-      ({
+      validation({
         ...input,
           [e.target.name]: e.target.value,
       })
@@ -86,22 +98,22 @@ export default function CreateDog() {
   }
 
   return (
-    <div className="fromPerfil">
+    <div className={s.fromPerfil}>
       <div >
         <div>
           
           <Link to="/home">
-            <button className="boton5">
+            <button className={s.boton5}>
               Home
             </button>
           </Link>
-          <h1 className="titleForm">Create Dog</h1>
+          <h1 className={s.titleForm}>Create Dog</h1>
         </div>
         <div className="">
-          <form className="fromPerfil">
+          <form className={s.fromPerfil}>
           
             <div className="">
-              <label className="title5">Name:</label>
+              <label className={s.title5}>Name:</label>
               <input
                 type="text"
                 name="name"
@@ -109,7 +121,7 @@ export default function CreateDog() {
                 onChange={(e) => handelChange(e)}
               /><br/><strong>{errors.name}</strong>
 
-              <label className="title5">Height min:</label>
+              <label className={s.title5}>Height min:</label>
               <input
                 type="number"
                 name="minHeight"
@@ -117,7 +129,7 @@ export default function CreateDog() {
                 onChange={(e) => handelChange(e)}
               /><br/><strong>{errors.minHeight}</strong>
 
-              <label className="title5">Height max:</label>
+              <label className={s.title5}>Height max:</label>
               <input
                 type="number"
                 name="maxHeight"
@@ -125,7 +137,7 @@ export default function CreateDog() {
                 onChange={(e) => handelChange(e)}
               /><br/><strong>{errors.maxHeight}</strong>
 
-              <label className="title5">Weight min:</label>
+              <label className={s.title5}>Weight min:</label>
               <input
                 type="number"
                 name="minWeight"
@@ -133,7 +145,7 @@ export default function CreateDog() {
                 onChange={(e) => handelChange(e)}
               /><br/><strong>{errors.minWeight}</strong>
 
-              <label className="title5">Weight max:</label>
+              <label className={s.title5}>Weight max:</label>
               <input
                 type="number"
                 name="maxWeight"
@@ -141,7 +153,7 @@ export default function CreateDog() {
                 onChange={(e) => handelChange(e)}
               ></input><br/><strong>{errors.maxWeight}</strong>
 
-              <label className="title5">Life span min:</label>
+              <label className={s.title5}>Life span min:</label>
               <input
                 type="number"
                 name="minlife_span"
@@ -149,7 +161,7 @@ export default function CreateDog() {
                 onChange={(e) => handelChange(e)}
               /><br/><strong>{errors.minlife_span}</strong>
 
-              <label className="title5">Life span max:</label>
+              <label className={s.title5}>Life span max:</label>
               <input
                 type="number"
                 name="maxlife_span"
@@ -157,7 +169,7 @@ export default function CreateDog() {
                 onChange={(e) => handelChange(e)}
               /><br/><strong>{errors.maxlife_span}</strong>
 
-              <label name="image" className="title5">
+              <label name="image" className={s.title5}>
                 Image:
               </label>
               <input
@@ -167,12 +179,12 @@ export default function CreateDog() {
                 onChange={(e) => handelChange(e)}
               ></input>
 
-              <label className="title5" value="temperament" name="temperament">
+              <label className={s.title5} value="temperament" name="temperament">
                 {" "}
                 Temperaments:{" "}
               </label>
               <select
-                className="boton5"
+                className={s.boton5}
                 onChange={(e) => handleSelectTemperament(e)}
               >
                 <option>Temperaments</option>
@@ -186,10 +198,10 @@ export default function CreateDog() {
 
               {input.temperaments.map((nombre) => {
                 return (
-                  <div className="concatFiltro">
+                  <div className={s.concatFiltro}>
                   <span key={nombre}>
                    
-                    <button className="boton3" onClick={(nombre)=> handleDelete(nombre)}>
+                    <button className={s.boton3} onClick={(nombre)=> handleDelete(nombre)}>
                       {nombre} 
                     </button>
                   </span>
@@ -198,7 +210,7 @@ export default function CreateDog() {
               })}   
               
               <button
-                className="boton5"
+                className={s.boton5}
                 type="submit"
                 onClick={(e) => handleSubmit(e)}
               > Create new Dog
@@ -208,8 +220,8 @@ export default function CreateDog() {
           </form>
         </div>
       </div>
-      <div className="imgperfil">
-        <img src="https://cdn.shopify.com/s/files/1/1956/7269/products/Boxer-dog-Art-Print_grande.jpg?v=1589294200" alt="perfil" />
+      <div className={s.imgperfil}>
+        <img className={s.imgP} src={imgP} alt="perfil" />
       </div>
     </div>
   );
