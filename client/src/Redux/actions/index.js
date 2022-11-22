@@ -117,7 +117,7 @@ const removeSelectedDog = (payload) => {
         type: 'REMOVE_SELECTED_DOG'
     }
 }
-
+ 
 
 export {
     getAllDogs,

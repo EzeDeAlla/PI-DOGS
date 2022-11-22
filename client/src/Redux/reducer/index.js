@@ -51,9 +51,6 @@ const rootReducer = (state = initialState, action) => {
           dog: {},
         }
 
-
-
-
 // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
     case FILTER_BY_API_DB:
       const allDogs = state.allDogs;
