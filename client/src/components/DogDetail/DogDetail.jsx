@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getDog } from "../../Redux/actions/index";
+import { getDog, removeSelectedDog } from "../../Redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import s from './DogDetail.module.css'
 import { Link } from "react-router-dom";
@@ -15,6 +15,9 @@ export default function Detail(){
 
     useEffect(() => {
         dispatch(getDog(id));
+        return () => {
+            dispatch(removeSelectedDog())
+        }
     }, [dispatch, id]);
 
     return (

@@ -7,6 +7,7 @@ import {
   FILTER_BY_TEMPERAMENT,
   ORDER_BY_NAME,
   ORDER_BY_WEIGHT,
+  REMOVE_SELECTED_DOG,
 } from "../actions/index";
 
 const initialState = {
@@ -42,6 +43,17 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         dog: action.payload,
       };
+// || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
+
+      case REMOVE_SELECTED_DOG:
+        return{
+          ...state,
+          dog: {},
+        }
+
+
+
+
 // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || // || //
     case FILTER_BY_API_DB:
       const allDogs = state.allDogs;

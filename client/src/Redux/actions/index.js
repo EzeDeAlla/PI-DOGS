@@ -8,6 +8,7 @@ export const FILTER_BY_API_DB = "FILTER_BY_API_DB";
 export const FILTER_BY_TEMPERAMENT = "FILTER_BY_TEMPERAMENT";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
+export const REMOVE_SELECTED_DOG = "REMOVE_SELECTED_DOG";
 
 
 
@@ -111,7 +112,11 @@ const postDogs =(payload)=>{
     }
 }
 
-
+const removeSelectedDog = (payload) => {
+    return{
+        type: 'REMOVE_SELECTED_DOG'
+    }
+}
 
 
 export {
@@ -126,4 +131,5 @@ export {
     filterA_Z,
     filter_created,
     postDogs,
+    removeSelectedDog,
 }

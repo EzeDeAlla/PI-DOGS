@@ -18,11 +18,14 @@
     background: #95c0a7;
     font-family: jetBrains Mono;
     color: #3f7e59;
+    border-radius: 0px 0px 95px 97px; 
+    -webkit-border-radius: 0px 0px 95px 97px;
+    -moz-border-radius: 0px 0px 95px 97px;
   }
   
   .img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 25px;
   }
   
   .divTemperamento {

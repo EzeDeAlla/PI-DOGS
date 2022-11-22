@@ -7,9 +7,11 @@
     height: 500px;
     margin-bottom: 85px;
 }
+
 .imagenLoading{
    margin-top: 200px;
 }
+
 .cardDetalle{
     width: 500px;
     height: 500px;
@@ -24,7 +26,8 @@
     color:#3eb870;;
     padding:5px 8px 5px 8px;
     margin-left: 650px;
-}  
+}
+
 .boton4{
     color:#3f7e59;
     background-color:#95c0a7;
@@ -37,6 +40,18 @@
     margin-top: 5%;;
     margin-left: 580px;
 }
+
 .boton4:hover{
     background-color: #95c0a7;
+}
+
+.imagdetalle:hover{
+    box-shadow: 0px 0px 15px 15px #298e46;
+    -webkit-box-shadow: 0px 0px 15px 15px #298e46;
+    }
+
+
+.cardDetalle:hover{  
+        box-shadow: 0px 0px 15px 15px #298e46;
+        -webkit-box-shadow: 0px 0px 15px 15px #298e46;
 }

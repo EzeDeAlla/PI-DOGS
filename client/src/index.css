@@ -5,7 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('./img/dogBones.jpg');
+  background-image: url('./img/cool-background\ \(1\).png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 80%;
+  background-attachment: fixed;
 }
 
 code {
