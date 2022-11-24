@@ -10,11 +10,11 @@ export const DogDetailByName = () => {
   const search = useLocation().search;
   const name = new URLSearchParams(search).get("name");
   const dog = useSelector((state) => state.dog);
-  console.log(dog);
+  // console.log(dog);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDogByName(name));
-  }, []);
+  }, [dispatch, name]);
 
   if (typeof dog.error === "string") {
     return (

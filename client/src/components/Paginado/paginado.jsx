@@ -14,7 +14,7 @@ const Pagination = ({ dogsPerPage, totalDogs, paginate }) => {
           <ul className={s.pagination}>
             {pageNumbers.map((number) => (
               <li key={number} className={s.listas}>
-                <a onClick={() => paginate(number)}>{number}</a>
+                <button > <span className={s.button_top} onClick={() => paginate(number)}>{number} </span></button>
               </li>
             ))}
           </ul>

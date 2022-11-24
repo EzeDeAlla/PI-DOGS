@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export default function Detail(){
     const { id }= useParams();
     const dogDetail = useSelector((e)=>e.dog);
-    console.log(dogDetail);
+    // console.log(dogDetail);
     const dispatch = useDispatch();
 
 

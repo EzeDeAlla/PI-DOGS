@@ -20,11 +20,11 @@ export const Home = () => {
   useEffect(() => {
     dispatch(getAllDogs());
     dispatch(getTemperaments());
-  }, []);
+  }, [dispatch]);
 
   //Paginado
   const [currentPage, setCurrentPage] = useState(1);
-  const [dogsPerPage, setDogsPerPage] = useState(8);
+  const [dogsPerPage] = useState(8);
 
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
@@ -33,7 +33,7 @@ export const Home = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   //Filtrados
-  const [orden, setOrden] = useState("");
+  const [, setOrden] = useState("");
 
   function handleFilterByApiDb(e) {
     dispatch(filterByApiDb(e.target.value));
@@ -71,7 +71,7 @@ export const Home = () => {
         >
           <option>Temperamentos</option>
           {temperamentos.map((el) => {
-            return <option>{el.name}</option>;
+            return <option key={el.id}>{el.name}</option>;
           })}
         </select>
         <select onChange={(e) => handleSortName(e)} className={s.select}>
@@ -95,9 +95,9 @@ export const Home = () => {
       <div className={s.dogsContainer}>
         {dogs.length > 0 ? (
           currentDogs.map((el) => (
-            <DogCard
+            <DogCard 
               image={el.image}
-              name={el.name}
+              name ={el.name}
               temperament={el.temperament}
               weight={el.weight}
               id={el.id}
