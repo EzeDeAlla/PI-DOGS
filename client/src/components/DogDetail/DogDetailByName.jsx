@@ -1,5 +1,5 @@
 import React from "react";
-import { getDogByName } from "../../Redux/actions/index";
+import { getDogByName, removeSelectedDog } from "../../Redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -14,6 +14,9 @@ export const DogDetailByName = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDogByName(name));
+    return () => {
+      dispatch(removeSelectedDog())
+  }
   }, [dispatch, name]);
 
   if (typeof dog.error === "string") {
