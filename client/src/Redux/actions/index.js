@@ -15,7 +15,7 @@ export const REMOVE_SELECTED_DOG = "REMOVE_SELECTED_DOG";
 const getAllDogs = () => {
     return async function (dispatch) {
         try{
-            var json = await axios.get('http://localhost:3001/dogs');
+            var json = await axios.get('https://doogs-backend.onrender.com/dogs');
             return dispatch({
                 type: GET_ALL_DOGS,
                 payload: json.data
@@ -31,7 +31,7 @@ const getAllDogs = () => {
 const getTemperaments = () => {
     return async function (dispatch) {
         try {
-            var json = await axios.get('http://localhost:3001/temperaments')
+            var json = await axios.get('https://doogs-backend.onrender.com/temperaments')
             return dispatch({
                 type: GET_TEMPERAMENTS,
                 payload: json.data
@@ -45,7 +45,7 @@ const getTemperaments = () => {
 
 const getDog = (id) => {
     return async (dispatch) => {
-        let json = await axios.get(`http://localhost:3001/dogs/${id}`)
+        let json = await axios.get(`https://doogs-backend.onrender.com/dogs/${id}`)
         return dispatch({
             type: GET_DOG,
             payload: json.data
@@ -55,7 +55,7 @@ const getDog = (id) => {
 
 const getDogByName = (name) => {
     return async (dispatch) => {
-            let json = await axios.get(`http://localhost:3001/dogs?name=${name}`)
+            let json = await axios.get(`https://doogs-backend.onrender.com/dogs?name=${name}`)
             return dispatch({
                 type: GET_DOG_BY_NAME,
                 payload: json.data
@@ -107,7 +107,7 @@ const filter_created = (payload) => {
 
 const postDogs =(payload)=>{
     return async function(){
-        const create= await axios.post('http://localhost:3001/dogs',payload);
+        const create= await axios.post('https://doogs-backend.onrender.com/dogs',payload);
         return create;
     }
 }
